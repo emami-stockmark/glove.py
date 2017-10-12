@@ -11,18 +11,18 @@ import glove
 
 # Mock corpus (shamelessly stolen from Gensim word2vec tests)
 test_corpus = ("""human interface computer
-survey user computer system response time.
-eps user interface system.
-system human system eps.
-user response time.
-trees.
-graph trees.
-graph minors trees.
-graph minors survey.
-I like graph and stuff.
-I like trees and stuff.
-Sometimes I build a graph.
-Sometimes I build trees.""").split("\n")
+survey user computer system response time
+eps user interface system
+system human system eps
+user response time
+trees
+graph trees
+graph minors trees
+graph minors survey
+I like graph and stuff
+I like trees and stuff
+Sometimes I build a graph
+Sometimes I build trees""").split("\n")
 
 glove.logger.setLevel(logging.ERROR)
 vocab = glove.build_vocab(test_corpus)
