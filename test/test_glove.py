@@ -8,7 +8,6 @@ import evaluate
 import glove
 
 
-
 # Mock corpus (shamelessly stolen from Gensim word2vec tests)
 test_corpus = ("""human interface computer
 survey user computer system response time
