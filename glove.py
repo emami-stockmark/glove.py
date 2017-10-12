@@ -8,7 +8,7 @@ from functools import partial
 import logging
 from math import log
 import os.path
-import cPickle as pickle
+import _pickle as pickle
 from random import shuffle
 
 import msgpack
@@ -114,7 +114,7 @@ def build_vocab(corpus):
 
     logger.info("Done building vocab from corpus.")
 
-    return {word: (i, freq) for i, (word, freq) in enumerate(vocab.iteritems())}
+    return {word: (i, freq) for i, (word, freq) in enumerate(vocab.items())}
 
 
 @listify
@@ -137,7 +137,7 @@ def build_cooccur(vocab, corpus, window_size=10, min_count=None):
     """
 
     vocab_size = len(vocab)
-    id2word = dict((i, word) for word, (i, _) in vocab.iteritems())
+    id2word = dict((i, word) for word, (i, _) in vocab.items())
 
     # Collect cooccurrences internally as a sparse matrix for passable
     # indexing speed; we'll convert into a list later
@@ -170,7 +170,7 @@ def build_cooccur(vocab, corpus, window_size=10, min_count=None):
 
     # Now yield our tuple sequence (dig into the LiL-matrix internals to
     # quickly iterate through all nonzero cells)
-    for i, (row, data) in enumerate(itertools.izip(cooccurrences.rows,
+    for i, (row, data) in enumerate(zip(cooccurrences.rows,
                                                    cooccurrences.data)):
         if min_count is not None and vocab[id2word[i]][1] < min_count:
             continue
